@@ -97,7 +97,7 @@ const defaultTheme = {
             backgroundColor: '#E9E8EE',
             focus: {
                 backgroundColor: '#5E7389',
-                fontSize: '19px',
+                fontSize: '18.5px',
                 color: '#FFF'
             }
         }

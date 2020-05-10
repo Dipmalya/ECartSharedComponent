@@ -15,7 +15,8 @@ class Accordion extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showPanel: false
+            showPanel: false,
+            item: this.props.item
         }
     }
 
@@ -24,24 +25,42 @@ class Accordion extends Component {
         this.setState({ showPanel: !showPanel });
     }
 
+    handleSubCategoryClick = (link) => {
+        this.props.onSubCategoryClick(link);
+    }
+
     render() {
         const {
-            showPanel
+            showPanel,
+            item: {
+                category = '',
+                options = []
+            }
         } = this.state;
 
         return (
             <div>
                 <StyledTab onClick={this.toggleArrow}>
-                    Category
+                    {category}
                     <StyledIcon
                         className={showPanel ? 'fa fa-caret-up' : 'fa fa-caret-down'}
                     />
                 </StyledTab>
                 {showPanel && (
                     <StyledPanel>
-                        <StyledItem>Sub-category1</StyledItem>
-                        <StyledItem>Sub-category2</StyledItem>
-                        <StyledItem>Sub-category3</StyledItem>
+                        {
+                            options.map((option, index) => {
+                                const {
+                                    subCategory = '',
+                                    link = ''
+                                } = option;
+                                return (
+                                    <StyledItem key={index} onClick={this.handleSubCategoryClick(link)}>
+                                        {subCategory}
+                                    </StyledItem>
+                                )
+                            })
+                        }
                     </StyledPanel>
                     )
                 }
@@ -51,11 +70,13 @@ class Accordion extends Component {
 }
 
 Accordion.defaultProps = {
-
+    item: {},
+    onSubCategoryClick: () => {}
 }
 
 Accordion.propTypes = {
-
+    item: PropTypes.shape(),
+    onSubCategoryClick: PropTypes.func
 }
 
 export default Accordion
