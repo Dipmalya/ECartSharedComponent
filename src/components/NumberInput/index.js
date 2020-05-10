@@ -6,7 +6,8 @@ class NumberInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: this.props.value
+            name: this.props.name,
+            value: this.props.value || 1
         }
     }
 
@@ -21,6 +22,12 @@ class NumberInput extends Component {
         }
     }
 
+    handleChange = (event) => {
+        this.setState({value: event.target.value});
+        const { name, value } = this.state;
+        this.props.onChange({ name, value });
+    }
+
     render() {
         const {
             value
@@ -29,9 +36,11 @@ class NumberInput extends Component {
             <Fragment>
                 <Button onClick={this.handleClick}>+</Button>
                 <StyledNumberInput
+                    readOnly
                     value={value}
+                    onChange={this.handleChange}
                 />
-                <Button onClick={this.handleClick}>-</Button>
+                <Button style={{padding: '1px 9px 3px 9px'}} onClick={this.handleClick}>-</Button>
             </Fragment>
         )
     }
@@ -39,14 +48,18 @@ class NumberInput extends Component {
 
 NumberInput.defaultProps = {
     id: '',
-    value: 1
+    name: 'number-input',
+    value: "1",
+    onChange: () => {}
 }
 
 NumberInput.propTypes = {
+    name: PropTypes.string,
     id: PropTypes.string,
     value: PropTypes.string,
     disabled: PropTypes.bool,
-    theme: PropTypes.shape()
+    theme: PropTypes.shape(),
+    onChange: PropTypes.func
 }
 
 export default NumberInput

@@ -49,15 +49,31 @@ const defaultTheme = {
     },
     input: {
         number: {
-            borderRadius: '50%',
             fontSize: '22px',
             border: 0,
             button: {
+                borderRadius: '50%',
                 fontSize: '20px',
                 color: '#FFF',
                 backgroundColor: '#0E546C',
                 borderColor: '#0E546C'
             }
+        },
+        password: {
+            fontSize: '18px',
+            borderRadius: '5px',
+            border: '1px solid #989FA1',
+            active: {
+                border: '1px solid #042338',
+            }
+        }
+    },
+    card: {
+        boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
+        color: '#333450',
+        hover: {
+            boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2)',
+            color: '#000'
         }
     }
 };
