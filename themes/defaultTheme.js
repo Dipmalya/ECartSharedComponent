@@ -48,6 +48,15 @@ const defaultTheme = {
         }
     },
     input: {
+        fontSize: '18px',
+        borderRadius: '5px',
+        border: '1px solid #989FA1',
+        active: {
+            border: '1px solid #042338',
+        },
+        error: {
+            border: '1px solid #d62828'
+        },
         number: {
             fontSize: '22px',
             border: 0,
