@@ -84,6 +84,23 @@ const defaultTheme = {
             boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2)',
             color: '#000'
         }
+    },
+    accordion: {
+        backgroundColor: '#383F53',
+        borderColor: '#272C41',
+        color: '#FFF',
+        fontSize: '18px',
+        fontWeight: 'bold',
+        letterSpacing: '0.5px',
+        panel: {
+            fontWeight: '300',
+            backgroundColor: '#E9E8EE',
+            focus: {
+                backgroundColor: '#5E7389',
+                fontSize: '19px',
+                color: '#FFF'
+            }
+        }
     }
 };
 
